@@ -3,7 +3,7 @@ syntax enable
 colorscheme monokai
 
 set tabstop=2 softtabstop=2
-set number
+vim.set relativenumber
 set relativenumber
 set nocompatible
 set laststatus=2

@@ -205,9 +205,11 @@ bindsym F7 exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volu
 bindsym F6 exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-# bindsym F3 exec xbacklight -inc 20 # increase screen brightness
-# bindsym F2 exec xbacklight -dec 20 # decrease screen brightness
+#bindsym F3 exec xbacklight -inc 20 # increase screen brightness
+#bindsym F2 exec xbacklight -dec 20 # decrease screen brightness
 
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
 # Touchpad controls
 # bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
@@ -218,6 +220,7 @@ bindsym F6 exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 # bindsym XF86AudioPrev exec playerctl previous
 
 exec_always feh --recursive --bg-scale ~/.wallpaper/737474.png
+exec_always nmcli radio wifi off
 
 default_border pixel 0
 default_floating_border pixel 0
@@ -226,3 +229,5 @@ hide_edge_borders both
 exec --no-startup-id compton
 
 bindsym Print exec gnome-screenshot
+
+exec --no-startup-id i3-battery-popup.sh
