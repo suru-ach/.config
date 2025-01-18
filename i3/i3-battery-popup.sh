@@ -26,6 +26,7 @@ main() {
         sleep 2s
         #exec i3-nagbar -m $PREC
     done
+
 } >/dev/null
 
 main

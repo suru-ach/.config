@@ -1,25 +1,13 @@
 imap jk <Esc>
-syntax enable
-colorscheme monokai
 
-set tabstop=2 softtabstop=2
+colo default
+
+set tabstop=4 softtabstop=4 shiftwidth=4
 set number
 set relativenumber
-set nocompatible
 set laststatus=2
+set scrolloff=8
+set is ic hls
+set nocompatible
 
-let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q"
-
-#call plug#begin('~/.vim/plugged')
-#
-#	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}	
-#
-#  Plug 'preservim/nerdtree'
-#
-#	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-#
-#call plug#end()
-
-nnoremap nt :NERDTreeToggle<CR>
-nnoremap nf :NERDTreeFind<CR>
+noremap <C-e> :E<CR>

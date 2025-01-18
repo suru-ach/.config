@@ -1,1 +1,1 @@
-require("s_config")
+require("suru.lazy")

@@ -145,13 +145,14 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+
 assign [class="Gnome-terminal"] $ws1
-assign [class="firefox"] $ws2
+# assign [class="firefox"] $ws2
 assign [class="Org.gnome.Nautilus"] $ws5
 assign [class="Evince"] $ws3
 
 exec i3-sensible-terminal
-exec firefox
+# exec firefox
 exec --no-startup-id i3-msg 'exec /usr/bin/evince'
 
 # reload the configuration file
@@ -160,6 +161,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -208,8 +210,8 @@ bindsym F6 exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 #bindsym F3 exec xbacklight -inc 20 # increase screen brightness
 #bindsym F2 exec xbacklight -dec 20 # decrease screen brightness
 
-bindsym XF86MonBrightnessUp exec light -A 10
-bindsym XF86MonBrightnessDown exec light -U 10
+bindsym XF86MonBrightnessUp exec light -A 2
+bindsym XF86MonBrightnessDown exec light -U 2 
 # Touchpad controls
 # bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
@@ -219,8 +221,9 @@ bindsym XF86MonBrightnessDown exec light -U 10
 # bindsym XF86AudioNext exec playerctl next
 # bindsym XF86AudioPrev exec playerctl previous
 
-exec_always feh --recursive --bg-scale ~/.wallpaper/737474.png
-exec_always nmcli radio wifi off
+# exec_always feh --recursive --bg-fill ~/.wallpaper/surtr4.jpg
+exec_always feh --recursive --bg-fill ~/.wallpaper/evan2.jpg
+exec_always nmcli radio wifi on
 
 default_border pixel 0
 default_floating_border pixel 0
@@ -230,4 +233,28 @@ exec --no-startup-id compton
 
 bindsym Print exec gnome-screenshot
 
-exec --no-startup-id i3-battery-popup.sh
+exec_always --no-startup-id ~/.config/i3/i3-battery-popup.sh
+
+mode "mode: [l]eft_extend [r]ight_extend [m]irror [s]ystem_only [h]dmi_only"{
+	bindsym m exec xrandr --output HDMI-A-0 --auto
+	bindsym r exec xrandr --output HDMI-A-0 --auto --right-of eDP 
+	bindsym l exec xrandr --output HDMI-A-0 --auto --left-of eDP 
+	#bindsym s exec xrandr --output HDMI-A-0 --off
+	bindsym s exec xrandr --output eDP --auto | xrandr --output HDMI-A-0 --off
+	#bindsym h exec xrandr --output HDMI-A-0 --auto
+	bindsym h exec xrandr --output eDP --off
+
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+
+}
+bindsym $mod+x mode "exit: [l]ogout, [r]eboot, [s]hutdown"
+bindsym $mod+m mode "mode: [l]eft_extend [r]ight_extend [m]irror [s]ystem_only [h]dmi_only
+
+bindsym $mod+Ctrl+Right move workspace to output right
+bindsym $mod+Ctrl+Left move workspace to output left
+
+# bind mod to windows key
+# exec --no-startup-id xmodmap -e "keycode 133 = Alt_L"
+
+exec --no-startup-id xmodmap ~/.Xmodmap
